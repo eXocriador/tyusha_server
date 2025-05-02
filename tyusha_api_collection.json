@@ -1,60 +1,56 @@
 {
-  "info": {
-    "name": "Tyusha Server",
-    "_postman_id": "b1e354c5-ccab-4e7a-8104-f12b9a6c1234",
-    "description": "Test API for Tyusha Server (Fastify + MongoDB)",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "item": [
-    {
-      "name": "Health Check",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "http://localhost:5000/api/health",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "health"]
-        }
-      }
-    },
-    {
-      "name": "Register",
-      "request": {
-        "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
-        "body": {
-          "mode": "raw",
-          "raw": "{\"email\":\"test@example.com\", \"password\":\"TestPassword123\"}"
-        },
-        "url": {
-          "raw": "http://localhost:5000/api/auth/register",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "auth", "register"]
-        }
-      }
-    },
-    {
-      "name": "Login",
-      "request": {
-        "method": "POST",
-        "header": [{"key": "Content-Type", "value": "application/json"}],
-        "body": {
-          "mode": "raw",
-          "raw": "{\"email\":\"test@example.com\", \"password\":\"TestPassword123\"}"
-        },
-        "url": {
-          "raw": "http://localhost:5000/api/auth/login",
-          "protocol": "http",
-          "host": ["localhost"],
-          "port": "5000",
-          "path": ["api", "auth", "login"]
-        }
-      }
-    }
-  ]
+	"info": {
+		"_postman_id": "a9a1df54-65f4-4e3e-b7c3-tyusha-api",
+		"name": "Tyusha API (prod)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Health check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tyusha-server.onrender.com/api/health",
+					"protocol": "https",
+					"host": ["tyusha-server", "onrender", "com"],
+					"path": ["api", "health"]
+				}
+			}
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [{"key": "Content-Type", "value": "application/json"}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"TestPassword123\"\n}"
+				},
+				"url": {
+					"raw": "https://tyusha-server.onrender.com/api/auth/register",
+					"protocol": "https",
+					"host": ["tyusha-server", "onrender", "com"],
+					"path": ["api", "auth", "register"]
+				}
+			}
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [{"key": "Content-Type", "value": "application/json"}],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"TestPassword123\"\n}"
+				},
+				"url": {
+					"raw": "https://tyusha-server.onrender.com/api/auth/login",
+					"protocol": "https",
+					"host": ["tyusha-server", "onrender", "com"],
+					"path": ["api", "auth", "login"]
+				}
+			}
+		}
+	]
 }
