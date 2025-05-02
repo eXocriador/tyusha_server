@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: tyusha-server
+    env: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: npm run dev
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: MONGO_URI
+        value: <ТВОЯ_РЕАЛЬНА_MONGO_URI>
+      - key: JWT_SECRET
+        value: <ТВОЙ_SECRET>
+      - key: PORT
+        value: 5000
