@@ -11,7 +11,7 @@ export default async function authRoutes(fastify: FastifyInstance) {
         try {
             const authHeader = request.headers.authorization;
             if (!authHeader || !authHeader.startsWith("Bearer ")) {
-                return reply.status(401).send({ message: "No token provided" });
+                return reply.status(401).send({ message: "Не передано токен" });
             }
 
             const token = authHeader.split(" ")[1];
@@ -21,14 +21,14 @@ export default async function authRoutes(fastify: FastifyInstance) {
 
             const user = await UserModel.findById(decoded.userId).select("_id email");
             if (!user) {
-                return reply.status(404).send({ message: "User not found" });
+                return reply.status(404).send({ message: "Користувача не знайдено" });
             }
 
             return { _id: user._id, email: user.email };
 
         } catch (error) {
-            console.error("GET /me error:", error);
-            return reply.status(401).send({ message: "Invalid token" });
+            console.error("GET /me помилка:", error);
+            return reply.status(401).send({ message: "Недійсний токен" });
         }
     });
 }
