@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import fastifyJwt from '@fastify/jwt';
 import fastifyCors from '@fastify/cors';
 import authRoutes from './routes/auth.routes.js';
+import googleOAuthPlugin from './routes/oauth.routes.js';
 
 dotenv.config();
 
