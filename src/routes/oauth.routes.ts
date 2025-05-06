@@ -49,4 +49,5 @@ const googleOAuthPlugin: FastifyPluginAsync = async (fastify) => {
   });
 };
 
+// aboba
 export default googleOAuthPlugin;
