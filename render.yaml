@@ -4,8 +4,10 @@ services:
     env: node
     plan: free
     region: frankfurt
-    buildCommand: npm install
-    startCommand: npm run dev
+    buildCommand: |
+      rm -rf node_modules package-lock.json
+      npm install
+    startCommand: npm start
     envVars:
       - key: NODE_VERSION
         value: 20
