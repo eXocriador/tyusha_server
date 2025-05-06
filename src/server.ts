@@ -22,6 +22,8 @@ fastify.ready(err => {
 
 
 fastify.register(authRoutes);
+fastify.register(googleOAuthPlugin);
+
 
 const start = async () => {
     try {
