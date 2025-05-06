@@ -20,7 +20,6 @@ const googleOAuthPlugin: FastifyPluginAsync = async (fastify) => {
 
   // Обробка колбеку
   fastify.get('/api/auth/google/callback', async (req, reply) => {
-    // ВАЖЛИВО: googleOAuth2 (не oauth2)
     const token = await fastify.googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(req);
 
     const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
@@ -31,16 +30,24 @@ const googleOAuthPlugin: FastifyPluginAsync = async (fastify) => {
 
     const { id: googleId, email, name } = profile;
 
-    // Перевірка користувача
-    let user = await UserModel.findOne({ googleId });
+    // === Шукаємо по email ===
+    let user = await UserModel.findOne({ email });
+
     if (!user) {
+      // Якщо користувача нема — створюємо
       user = new UserModel({
         email,
         name,
         googleId
       });
-      await user.save();
+    } else {
+      // Якщо є, але googleId ще не збережений — додаємо
+      if (!user.googleId) {
+        user.googleId = googleId;
+      }
     }
+
+    await user.save();
 
     // Створення JWT
     const jwt = fastify.jwt.sign({ id: user._id, email: user.email });
