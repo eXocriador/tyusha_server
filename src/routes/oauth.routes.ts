@@ -20,7 +20,7 @@ const googleOAuthPlugin: FastifyPluginAsync = async (fastify) => {
 
   // Обробка колбеку
   fastify.get('/api/auth/google/callback', async (req, reply) => {
-    const token = await fastify.googleOAuth2.getAccessTokenFromAuthorizationCodeFlow(req);
+    const token = await fastify.oauth2.getAccessTokenFromAuthorizationCodeFlow(req);
 
     const userInfoResponse = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
       headers: { Authorization: `Bearer ${token.token.access_token}` }
