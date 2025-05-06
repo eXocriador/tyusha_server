@@ -5,11 +5,11 @@
   "scripts": {
     "dev": "tsx src/server.ts",
     "start": "tsx src/server.ts"
-
   },
   "dependencies": {
     "@fastify/cors": "^8.2.1",
     "@fastify/jwt": "^7.2.0",
+    "@fastify/oauth2": "^8.1.2",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.3.1",
     "fastify": "^4.27.2",
